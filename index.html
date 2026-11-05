@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Google Fonts (Inter & Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <title>Barack Lihar Damanik — Portfolio</title>
+
+    <style>
+      :root {
+        --primary-accent: #4f46e5;
+        --primary-accent-hover: #4338ca;
+        --secondary-accent: #0ea5e9;
+        --gold-accent: #f59e0b;
+        --dark-bg: #0f172a;
+        --card-bg: #ffffff;
+        --soft-bg: #f8fafc;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: var(--text-main);
+        background-color: var(--soft-bg);
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4, .navbar-brand {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+
+      /* Navbar Styling */
+      .navbar {
+        backdrop-filter: blur(12px);
+        background-color: rgba(15, 23, 42, 0.92) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-link {
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover {
+        color: #38bdf8 !important;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: radial-gradient(circle at 85% 15%, rgba(79, 70, 229, 0.28) 0%, transparent 45%),
+                    radial-gradient(circle at 15% 85%, rgba(14, 165, 233, 0.22) 0%, transparent 45%),
+                    linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        color: #ffffff;
+        padding: 6rem 0 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-badge {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #38bdf8;
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        border-radius: 50rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .avatar-circle {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        box-shadow: 0 20px 35px -10px rgba(79, 70, 229, 0.5);
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        margin: 0 auto;
+      }
+
+      /* Section Headings */
+      .section-title {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2.5rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 55px;
+        height: 4px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+      }
+
+      /* Cards */
+      .portfolio-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        border-radius: 1rem;
+        box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        height: 100%;
+      }
+
+      .portfolio-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px -4px rgba(15, 23, 42, 0.12);
+      }
+
+      .icon-box {
+        width: 52px;
+        height: 52px;
+        border-radius: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      /* Quote Card */
+      .quote-banner {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border-radius: 1.25rem;
+        color: #f8fafc;
+        position: relative;
+        overflow: hidden;
+        border-left: 6px solid var(--primary-accent);
+      }
+
+      /* Badges & Medals */
+      .medal-gold {
+        background-color: rgba(245, 158, 11, 0.15);
+        color: #b45309;
+        border: 1px solid rgba(245, 158, 11, 0.35);
+        font-weight: 600;
+      }
+
+      .medal-science {
+        background-color: rgba(14, 165, 233, 0.15);
+        color: #0369a1;
+        border: 1px solid rgba(14, 165, 233, 0.35);
+        font-weight: 600;
+      }
+
+      /* Progress Bars for Skills & Languages */
+      .skill-progress {
+        height: 10px;
+        border-radius: 50rem;
+        background-color: #e2e8f0;
+        overflow: hidden;
+      }
+
+      .skill-progress .progress-bar {
+        border-radius: 50rem;
+      }
+
+      /* Duolingo Learning Banner */
+      .learning-callout {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 1rem;
+      }
+
+      /* Contact Buttons */
+      .contact-card {
+        background: linear-gradient(135deg, #4f46e5 0%, #0f172a 100%);
+        color: white;
+        border-radius: 1.25rem;
+      }
+
+      .social-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        transition: all 0.2s ease;
+        text-decoration: none;
+      }
+
+      .social-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+
+      /* Copy Notification Toast */
+      #copyToast {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 1080;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top py-3">
+      <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+          <span class="badge bg-primary rounded-pill">BLD</span>
+          <span>Barack Lihar Damanik</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portfolioNavbar" aria-controls="portfolioNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="portfolioNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#fun-facts">Fun Facts</a></li>
+            <li class="nav-item"><a class="nav-link" href="#interests">Interests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills & Languages</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-primary btn-sm text-white px-3 ms-lg-2 rounded-pill" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 1. Hero / Header Section -->
+    <header id="about" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-8 text-center text-lg-start">
+            <div class="hero-badge mb-3">
+              <i class="bi bi-stars"></i>
+              <span>Personal Portfolio</span>
+            </div>
+            <h1 class="display-4 fw-bold mb-2">Barack Lihar Damanik</h1>
+            <p class="fs-3 fw-semibold text-info mb-4">— One With Many Potential</p>
+            <p class="lead text-light opacity-90 mb-4" style="max-width: 680px;">
+              I like to learn new stuff and can get a grasp of it pretty quickly. I can adapt easily to new environments, and can keep up with hard work if trained for a while.
+            </p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+              <a href="#achievements" class="btn btn-primary btn-lg rounded-pill px-4 fw-semibold shadow-sm">
+                <i class="bi bi-trophy me-2"></i>View Achievements
+              </a>
+              <a href="#contact" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold">
+                <i class="bi bi-envelope me-2"></i>Get In Touch
+              </a>
+            </div>
+          </div>
+         <div class="col-lg-4 text-center">
+            <!-- New Profile Photo Circle -->
+            <div class="rounded-circle mx-auto mb-3 shadow overflow-hidden" style="width: 220px; height: 220px; border: 4px solid #fff;">
+              <img src="lihar.png" alt="Barack Lihar Damanik" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.45);">
+            </div>
+            <div class="mt-2">
+              <span class="badge bg-dark bg-opacity-50 border border-secondary text-light px-3 py-2 rounded-pill">
+                <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Fast Learner &amp; Adaptable
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. Featured Quote Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="quote-banner p-4 p-md-5 shadow">
+          <div class="row align-items-center">
+            <div class="col-md-1 text-center text-md-start mb-3 mb-md-0">
+              <i class="bi bi-quote display-3 text-info opacity-75"></i>
+            </div>
+            <div class="col-md-11">
+              <p class="text-uppercase text-info fw-bold small mb-2 letter-spacing-1">Favorite Quote</p>
+              <blockquote class="blockquote mb-0">
+                <p class="fs-3 fw-semibold fst-italic mb-0">
+                  "It's more important to master the cards you're holding than to complain about the ones your opponent was dealt."
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Fun Facts Section -->
+    <section id="fun-facts" class="py-5">
+      <div class="container">
+        <h2 class="section-title h2">Fun Facts</h2>
+        <div class="row g-4">
+          <!-- Fun Fact 1 -->
+          <div class="col-md-4">
+            <div class="portfolio-card p-4">
+              <div class="icon-box bg-primary bg-opacity-10 text-primary">
+                <i class="bi bi-stopwatch-fill"></i>
+              </div>
+              <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill mb-2">Chess Rating</span>
+              <h3 class="h5 fw-bold mb-2">700 ELO on Blitz</h3>
+              <p class="text-muted mb-0">
+                I am rated 700 ELO on blitz, enjoying fast-paced tactical matches and sharpening my quick decision-making skills on the board.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fun Fact 2 -->
+          <div class="col-md-4">
+            <div class="portfolio-card p-4">
+              <div class="icon-box bg-success bg-opacity-10 text-success">
+                <i class="bi bi-mortarboard-fill"></i>
+              </div>
+              <span class="badge bg-success bg-opacity-10 text-success rounded-pill mb-2">Academic Milestone</span>
+              <h3 class="h5 fw-bold mb-2">Accepted in Canicius College</h3>
+              <p class="text-muted mb-0">
+                I got accepted in Canicius College, reflecting my commitment to academic readiness and personal growth.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fun Fact 3 -->
+          <div class="col-md-4">
+            <div class="portfolio-card p-4">
+              <div class="icon-box bg-warning bg-opacity-10 text-warning">
+                <i class="bi bi-award-fill"></i>
+              </div>
+              <span class="badge bg-warning bg-opacity-10 text-dark rounded-pill mb-2">Family Heritage</span>
+              <h3 class="h5 fw-bold mb-2">National Hero Lineage</h3>
+              <p class="text-muted mb-0">
+                My great great grandfather is a national hero—an inspiring legacy that motivates me to give my best in everything I pursue.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interests & Hobbies Section -->
+    <section id="interests" class="py-5 bg-white border-top border-bottom">
+      <div class="container">
+        <h2 class="section-title h2">Interests &amp; Hobbies</h2>
+        <div class="row g-4 mb-4">
+          <!-- Hobby 1: Playing Chess -->
+          <div class="col-md-4">
+            <div class="portfolio-card p-4 text-center">
+              <div class="icon-box bg-indigo bg-primary bg-opacity-10 text-primary mx-auto">
+                <i class="bi bi-grid-3x3-gap-fill"></i>
+              </div>
+              <h3 class="h5 fw-bold">Playing Chess</h3>
+              <p class="text-muted small mb-0">
+                Practicing strategy, board vision, and blitz tactics.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hobby 2: Reading -->
+          <div class="col-md-4">
+            <div class="portfolio-card p-4 text-center">
+              <div class="icon-box bg-info bg-opacity-10 text-info mx-auto">
+                <i class="bi bi-book-half"></i>
+              </div>
+              <h3 class="h5 fw-bold">Reading</h3>
+              <p class="text-muted small mb-0">
+                Exploring new ideas, stories, and expanding knowledge every day.
+              </p>
+            </div>
+          </div>
+
+          <!-- Hobby 3: Playing Horror Games -->
+          <div class="col-md-4">
+            <div class="portfolio-card p-4 text-center">
+              <div class="icon-box bg-danger bg-opacity-10 text-danger mx-auto">
+                <i class="bi bi-controller"></i>
+              </div>
+              <h3 class="h5 fw-bold">Playing Horror Games</h3>
+              <p class="text-muted small mb-0">
+                Testing composure and problem-solving in thrilling game environments.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duolingo Highlight Banner -->
+        <div class="learning-callout p-4 d-flex flex-column flex-md-row align-items-center gap-3">
+          <div class="icon-box bg-success text-white mb-0 flex-shrink-0">
+            <i class="bi bi-translate"></i>
+          </div>
+          <div>
+            <span class="badge bg-success mb-1">Currently Learning on Duolingo</span>
+            <p class="fs-5 fw-medium mb-0 text-dark">
+              I am currently learning some chess tricks on Duolingo. Not only that, I’m also learning Japanese on the same app.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Projects & Achievements Section -->
+    <section id="achievements" class="py-5">
+      <div class="container">
+        <h2 class="section-title h2">Projects &amp; Achievements</h2>
+        <div class="row g-4">
+          <!-- Achievement 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="portfolio-card p-4 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge medal-gold px-3 py-2 rounded-pill">
+                    <i class="bi bi-trophy-fill me-1"></i> Gold Medalist
+                  </span>
+                  <span class="text-muted small fw-semibold">Taekwondo</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">CNN Taekwondo Tournament (Gold)</h3>
+                <p class="text-muted mb-0">
+                  A starter Taekwondo tournament hosted by CNN.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-top d-flex align-items-center text-warning fw-semibold small">
+                <i class="bi bi-star-fill me-2"></i> 1st Place Podium Finish
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievement 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="portfolio-card p-4 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge medal-gold px-3 py-2 rounded-pill">
+                    <i class="bi bi-trophy-fill me-1"></i> Gold Medalist
+                  </span>
+                  <span class="text-muted small fw-semibold">Taekwondo</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">League 12 Taekwondo Tournament (Gold)</h3>
+                <p class="text-muted mb-0">
+                  A starter Taekwondo tournament supported by many companies in Indonesia.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-top d-flex align-items-center text-warning fw-semibold small">
+                <i class="bi bi-star-fill me-2"></i> 1st Place Podium Finish
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievement 3 -->
+          <div class="col-lg-4 col-md-12">
+            <div class="portfolio-card p-4 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge medal-science px-3 py-2 rounded-pill">
+                    <i class="bi bi-award-fill me-1"></i> National Science Olympiad
+                  </span>
+                  <span class="text-muted small fw-semibold">2025</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Olimpiade Sains Nasional 2025</h3>
+                <p class="text-muted mb-0">
+                  Participated in OSN 2025 for IPA subject.
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-top d-flex align-items-center text-info fw-semibold small">
+                <i class="bi bi-lightbulb-fill me-2"></i> Natural Sciences (IPA) Division
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Skills & Languages Spoken Section -->
+    <section id="skills" class="py-5 bg-white border-top border-bottom">
+      <div class="container">
+        <div class="row g-5">
+          <!-- Core Skills Column -->
+          <div class="col-lg-6">
+            <h2 class="section-title h2">Skills</h2>
+            <div class="portfolio-card p-4">
+              <!-- Technical Skills -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold"><i class="bi bi-cpu text-primary me-2"></i>Technical skills</span>
+                  <span class="badge bg-primary rounded-pill">Confident</span>
+                </div>
+                <div class="progress skill-progress">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <!-- Creative Skills -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold"><i class="bi bi-palette text-info me-2"></i>Creative skills</span>
+                  <span class="badge bg-info text-dark rounded-pill">Intermediate</span>
+                </div>
+                <div class="progress skill-progress">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <!-- Soft Skills -->
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold"><i class="bi bi-people text-success me-2"></i>Soft skills</span>
+                  <span class="badge bg-success rounded-pill">Intermediate</span>
+                </div>
+                <div class="progress skill-progress">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages Spoken Column -->
+          <div class="col-lg-6">
+            <h2 class="section-title h2">Language Spoken</h2>
+            <div class="portfolio-card p-4">
+              <!-- Indonesia -->
+              <div class="mb-3 pb-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold"><i class="bi bi-chat-dots text-primary me-2"></i>Indonesia</span>
+                  <span class="badge bg-primary rounded-pill">Confident</span>
+                </div>
+                <div class="progress skill-progress">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <!-- English -->
+              <div class="mb-3 pb-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold"><i class="bi bi-globe2 text-primary me-2"></i>English</span>
+                  <span class="badge bg-primary rounded-pill">Confident</span>
+                </div>
+                <div class="progress skill-progress">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <!-- Japanese -->
+              <div class="mb-3 pb-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold"><i class="bi bi-translate text-warning me-2"></i>Japanese</span>
+                  <span class="badge bg-warning text-dark rounded-pill">Beginner</span>
+                </div>
+                <div class="progress skill-progress">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <!-- Batak Simalungun -->
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fw-bold"><i class="bi bi-chat-heart text-warning me-2"></i>Batak Simalungun</span>
+                  <span class="badge bg-warning text-dark rounded-pill">Beginner</span>
+                </div>
+                <div class="progress skill-progress">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Contact & Social Section -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <div class="contact-card p-4 p-md-5 shadow-lg">
+          <div class="row align-items-center gy-4">
+            <div class="col-lg-5">
+              <span class="badge bg-info text-dark fw-bold mb-2 px-3 py-2 rounded-pill">Connect With Me</span>
+              <h2 class="h1 fw-bold mb-3">Contact &amp; Social</h2>
+              <p class="text-light opacity-75 mb-0">
+                Feel free to reach out via email or check out my YouTube channel!
+              </p>
+            </div>
+            <div class="col-lg-7">
+              <div class="d-flex flex-column gap-3">
+                <!-- Email Item -->
+                <div class="social-btn d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
+                  <div class="d-flex align-items-center gap-3 overflow-hidden">
+                    <i class="bi bi-envelope-at-fill fs-3 text-info flex-shrink-0"></i>
+                    <div class="text-truncate">
+                      <div class="small text-light opacity-75">Email</div>
+                      <a href="mailto:barack.lihar.damanik@harapanprestasi.sch.id" class="text-white fw-semibold text-decoration-none text-break">
+                        barack.lihar.damanik@harapanprestasi.sch.id
+                      </a>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-light rounded-pill px-3 fw-semibold flex-shrink-0" onclick="copyText('barack.lihar.damanik@harapanprestasi.sch.id', 'Email address copied!')">
+                    <i class="bi bi-clipboard me-1"></i>Copy
+                  </button>
+                </div>
+
+                <!-- YouTube Item -->
+                <div class="social-btn d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
+                  <div class="d-flex align-items-center gap-3">
+                    <i class="bi bi-youtube fs-3 text-danger flex-shrink-0"></i>
+                    <div>
+                      <div class="small text-light opacity-75">YouTube</div>
+                      <a href="https://www.youtube.com/@EpikNinja417" target="_blank" rel="noopener noreferrer" class="text-white fw-semibold text-decoration-none">
+                        @EpikNinja417
+                      </a>
+                    </div>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <a href="https://www.youtube.com/@EpikNinja417" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-danger rounded-pill px-3 fw-semibold">
+                      <i class="bi bi-box-arrow-up-right me-1"></i>Visit Channel
+                    </a>
+                    <button type="button" class="btn btn-sm btn-outline-light rounded-pill px-3" onclick="copyText('@EpikNinja417', 'YouTube handle copied!')">
+                      <i class="bi bi-clipboard"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-center text-secondary border-top border-secondary border-opacity-25">
+      <div class="container">
+        <p class="mb-0 small">
+          &copy; 2026 <strong class="text-light">Barack Lihar Damanik</strong> — One With Many Potential. Built with Bootstrap 5.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Floating Copy Notification Toast -->
+    <div id="copyToast" class="bg-dark text-white px-4 py-3 rounded-pill shadow-lg border border-secondary align-items-center gap-2">
+      <i class="bi bi-check-circle-fill text-success"></i>
+      <span id="copyToastMessage">Copied to clipboard!</span>
+    </div>
+
+    <!-- Copy-to-Clipboard Helper Script -->
+    <script>
+      function copyText(text, message) {
+        const tempInput = document.createElement('textarea');
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        const toast = document.getElementById('copyToast');
+        const toastMsg = document.getElementById('copyToastMessage');
+        toastMsg.textContent = message;
+        toast.style.display = 'inline-flex';
+
+        clearTimeout(window.copyToastTimer);
+        window.copyToastTimer = setTimeout(() => {
+          toast.style.display = 'none';
+        }, 2500);
+      }
+    </script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
